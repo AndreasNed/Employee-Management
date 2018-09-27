@@ -3,7 +3,7 @@ package staff_management_project_2;
 
 public class Main {
     
-    static boolean run = true;  // boolean to run the program
+    static boolean run = true;  // boolean to run the program (Main)
     public static void main(String[] args) {
         
         HumanResources.debugg();
@@ -13,7 +13,7 @@ public class Main {
         }
                 
     }
-    
+    // MAIN MENU
     public static void mainMenu(){
         System.out.println("MAIN MENU");
         System.out.println("1) Add new Employee");

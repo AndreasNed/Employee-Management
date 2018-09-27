@@ -3,7 +3,7 @@ package staff_management_project_2;
 public class HRStatistics {
 
     public static boolean run = true;
-
+    //STATS MENU
     public static void statsMenu() {
 
         while (run) {
@@ -36,7 +36,7 @@ public class HRStatistics {
 
         }
     }
-
+    //METHOD TO CALCULATE AVERAGE SALARY BETWEEN ALL EMPLOYEES IN employeeList
     public static void calculateAverageSalary() {
         double averageSalary = 0;
         for (Employee employee : HumanResources.empolyeeList) {
@@ -44,7 +44,7 @@ public class HRStatistics {
         }
         System.out.println("Average salary: " + averageSalary / (double) HumanResources.empolyeeList.size());
     }
-
+    //METHOD TO SHOW GENDER DISTIRUBTION IN DIFFERENT DEPARTMENTS AND FROM ALL EMPLOYEES
     public static void showGenderDistribution() {
 
         //GENDER DISTRIBUTION IN MANAGER
@@ -183,7 +183,7 @@ public class HRStatistics {
         System.out.println("Other accountant: " + otherAccountantCount + ", " + otherAccountnatPercentage + "%");
 
     }
-
+    //METHOD TO SHOW HOW MUCH BONUS IN DISTRIBUTED BETWEEN DEPARTMENTS
     public static void showBonusPayment() {
         double bonusManager = 0;
         double bonusTechnician = 0;
@@ -204,7 +204,7 @@ public class HRStatistics {
         System.out.println("Bonus payment overall = " + (bonusManager + bonusTechnician + bonusAccountant));
 
     }
-
+    //METHOD TO SHOW HIGHEST AND LOWEST SALARY BETWEEN EMPLOYEES
     private static void showHigestAndLowestSalary() {
         Employee hi = HumanResources.empolyeeList.get(0);
         Employee lo = HumanResources.empolyeeList.get(0);

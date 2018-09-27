@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class HumanResources {
 
     static Scanner sc = new Scanner(System.in);
-    public static ArrayList<Employee> empolyeeList = new ArrayList<>();
+    static ArrayList<Employee> empolyeeList = new ArrayList<>();
 
+    // PRINTMENU
     public static void printMenu() {
         String listSelect = "";
         while (!listSelect.equals("0")) {
@@ -43,6 +44,7 @@ public class HumanResources {
         }
     }
 
+    //METHOD TO ADD EMPLOYEE IN employeeList (ArrayList)
     public static void addEmployee() {
         System.out.print("First name of employee: ");
         String firstName = sc.nextLine();
@@ -77,23 +79,30 @@ public class HumanResources {
 
     }
 
+    //METHOD TO REMOVE EMPLOYEE IN employeeList (ArrayList)
     public static void removeEmployee() {
         System.out.println("Enter ID of employee you would like to remove");
         int remove = readNumber();
 
-        System.out.println("Are you sure you would like remove - " + getEmployeeByID(remove));
-        System.out.print("Yes or No: ");
+        if (getEmployeeByID(remove) == null) {
+            System.out.println("Request cancelled");
+        } else {
+            System.out.println("Are you sure you would like remove - " + getEmployeeByID(remove));
 
-        String removeChecker = sc.nextLine();
-        if (removeChecker.equalsIgnoreCase("yes")) {
-            empolyeeList.remove(getEmployeeByID(remove));
-            System.out.println("Employee removed");
-        } else if (removeChecker.equalsIgnoreCase("no")) {
-            System.out.println("Canceling");
+            System.out.print("Yes or No: ");
+
+            String removeChecker = sc.nextLine();
+            if (removeChecker.equalsIgnoreCase("yes")) {
+                empolyeeList.remove(getEmployeeByID(remove));
+                System.out.println("Employee removed");
+            } else if (removeChecker.equalsIgnoreCase("no")) {
+                System.out.println("Canceling");
+            }
         }
 
     }
 
+    //METHOD TO UPDATE AN EMPLOYEE IN employeeList (ArrayList)
     public static void updateEmployee() {
         System.out.print("ID of person to update: ");
         int getId = readNumber();
@@ -125,17 +134,19 @@ public class HumanResources {
         }
     }
 
+    //METHOD TO GET EMPLOYEE BY SEARCHING FOR AN ID IN employeeList (ArrayList)
     private static Employee getEmployeeByID(int id) {
         for (Employee employee : empolyeeList) {
             if (employee.getId() == id) {
                 return employee;
             }
         }
-        System.out.println("no employee found with ID: " + id);
+        System.out.println("No employee found with ID: " + id);
         return null;
 
     }
 
+    //READNUMER USED INSTEAD OF .nextInt();
     public static int readNumber() {
 
         String strNum;
@@ -149,6 +160,7 @@ public class HumanResources {
         return num;
     }
 
+    //DEBUGG ADDING A FEW RANDOM PERSONS FOR TESTING
     public static void debugg() {
         empolyeeList.add(new Manager("Andreas", "Nedbal", "Male"));
         empolyeeList.add(new Technician("Pontus", "Paulsson", "Other"));
@@ -159,6 +171,7 @@ public class HumanResources {
         empolyeeList.add(new Accountant("Stina", "Johansson", "Female"));
     }
 
+    //PRINT ALL MANAGERS IN employeeList
     private static void printManagers() {
         for (Employee employee : empolyeeList) {
             if (employee instanceof Manager) {
@@ -168,6 +181,7 @@ public class HumanResources {
         }
     }
 
+    //PRINT ALL TECHNICIANS IN employeeList
     private static void printTechnicians() {
         for (Employee employee : empolyeeList) {
             if (employee instanceof Technician) {
@@ -176,6 +190,7 @@ public class HumanResources {
         }
     }
 
+    //PRINT ALL ACCOUNTATNS IN employeeList
     private static void printAccountant() {
         for (Employee employee : empolyeeList) {
             if (employee instanceof Accountant) {
@@ -184,12 +199,14 @@ public class HumanResources {
         }
     }
 
+    //PRINT EVERYBODY IN employeeList
     private static void printAll() {
         for (Employee employee : empolyeeList) {
             System.out.println(employee);
         }
     }
 
+    //PRINT A SINGLE PERSON VIA ID in employeeList
     public static void printSingle() {
         System.out.println("Enter ID of employee");
         int id = readNumber();
